@@ -52,8 +52,17 @@ namespace :dev do
     end
     puts "Have created fake replies."
     puts "Now you have #{Reply.count} reply data."
+  end
 
-
+  task fake_likes: :environment do
+    Like.destroy_all
+    500.times do |i|
+      Like.create!(
+        user_id: User.all.sample.id,
+        tweet_id: Tweet.all.sample.id,
+      )
+    end
+    puts "create fake #{Like.count} likes!"
   end
 
 end
