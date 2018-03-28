@@ -13,19 +13,25 @@
 
       <hr>
 
-        <h3>Tweets list</h3>
-        <% @users.each do |user|%>
-          <div>
-            <h4><%= link_to user.name, user_path(user)%></h4>
-            email: <br>
-            Tweets.size: <br>
-            Following.size: <br>
-            Followers.size: <br>
-            liked.size: 
+        
+      <% @users.each do |user|%>
+        <div class="row">
+          <div class="col-md-3">
+            <%= image_tag user.avatar, class:"img-responsive" if user.avatar? %>
           </div>
-          <hr>
-        <% end %>
-  
+          <div class="col-md-8">
+            <h4><%= link_to user.name, tweets_user_path(user)%></h4>
+            <ul>
+              <li>email: <%= user.email %></li>
+              <li>Tweets: <%= user.tweets.size%></li>
+              <li>Following: <%= user.followings.size%></li>
+              <li>Followers: <%= user.followers.size%></li>
+              <li>liked: <%= user.tweets.sum(:likes_count)%></li>
+            </ul>
+          </div>
+        </div>
+            <hr>
+      <% end %>
 
     </div>
   </div>
