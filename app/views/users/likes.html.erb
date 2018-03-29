@@ -1,0 +1,41 @@
+<div class="container">
+  <div class="row">
+
+    <div class="col-md-4">
+      <div class="">
+        <%= image_tag @user.avatar, width: "100%" if @user.avatar? %><br />
+      
+        <h3> <%= @user.name %></h3><br>
+        <p><%= @user.introduction %></p>
+        <%= link_to tweets_user_path(@user) do %>
+        <h3>Tweets <%=@user.tweets.size %></h3>
+        <%end%>
+        <%= link_to followships_path(@user) do %>
+        <h3>Followings <%=@user.followings.size %></h3>
+        <% end %>
+        
+        <h3>Follower <%=@user.followers_count %></h3>
+        
+        <%= link_to likes_user_path(@user) do %>
+        <h3>Likes <%= @user.likes.size %></h3>
+        <% end %>
+          
+      </div>  
+        <p>
+          <% if @user.email == current_user.email %>
+            <%= link_to 'Edit Profile', edit_user_path(@user), class: "btn btn-primary" %>
+          <% end %>  
+        </p>
+      
+      
+      
+    </div>
+
+    <div class="col-md-8">
+
+      
+    </div>
+
+      
+  </div>
+</div>

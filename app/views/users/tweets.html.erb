@@ -10,9 +10,10 @@
         <%= link_to tweets_user_path(@user) do %>
         <h3>Tweets <%=@user.tweets.size %></h3>
         <%end%>
-
-        <h3>Following <%=@user.followings.size %></h3>
-
+        <%= link_to followships_path(@user) do %>
+        <h3>Followings <%=@user.followings.size %></h3>
+        <% end %>
+        
         <h3>Follower <%=@user.followers_count %></h3>
         
         <%= link_to likes_user_path(@user) do %>
