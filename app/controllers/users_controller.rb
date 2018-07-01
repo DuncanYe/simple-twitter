@@ -39,7 +39,7 @@ class UsersController < ApplicationController
 
   def likes
     @user = User.find(params[:id])
-    @likes = User.find(params[:id]) # 基於測試規格，必須講定變數名稱
+    @likes = @user.like_tweets # 基於測試規格，必須講定變數名稱
   end
 
   private
