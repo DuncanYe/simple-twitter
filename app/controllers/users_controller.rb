@@ -1,5 +1,7 @@
 class UsersController < ApplicationController
 
+  before_action :find_user
+
   def tweets
     @user = User.find(params[:id])
     @tweets = @user.tweets.order(created_at: :desc)
@@ -46,6 +48,10 @@ class UsersController < ApplicationController
 
   def user_params
     params.require(:user).permit(:name, :introduction, :avatar)
+  end
+
+  def find_user
+    @user = User.find(params[:id])
   end
 
 end

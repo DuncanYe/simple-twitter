@@ -10,7 +10,7 @@
         <%= link_to tweets_user_path(@user) do %>
         <h3>Tweets <%=@user.tweets.size %></h3>
         <%end%>
-        <%= link_to followships_path(@user) do %>
+        <%= link_to followings_user_path(@user) do %>
         <h3>Followings <%=@user.followings.size %></h3>
         <% end %>
         

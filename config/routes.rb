@@ -20,6 +20,7 @@ Rails.application.routes.draw do
       get :tweets
       # 在要user modle 裡拿到推特 所以設定在 user model 裡
       get :likes
+      get :followings
     end
   end
 
