@@ -8,7 +8,9 @@
 <%= link_to followings_user_path(user) do %>
   <h3>Followings <%=user.followings.size %></h3>
 <% end %>
-<h3>Follower <%=user.followers_count %></h3>
+<%= link_to followers_user_path(user) do %>
+  <h3>Followers <%=user.followers.size %></h3>
+<% end %>
 <%= link_to likes_user_path(user) do %>
   <h3>Likes <%= user.likes.size %></h3>
 <% end %>
