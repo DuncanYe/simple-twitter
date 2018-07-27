@@ -1,0 +1,34 @@
+<div class="container">
+  <div class="row">
+    <div class="col-md-4">
+      <%= render partial: "shared/user_profile", locals: {user: @user} %>
+    </div>
+    <div class="col-md-8">
+      <% @followings.each do |user| %>
+      <div class="row">
+        <div class="col-md-3">
+          <%= link_to user_path(user) do %>
+          <%= image_tag user.avatar, class:"img-responsive" %>
+          <% end %>
+        </div>
+        <div class="col-md-8">
+          <ul>
+            <li>
+              <h5><%= link_to user.name, tweets_user_path(user) %></h5>
+            </li>
+            <li>
+              <%= user.introduction %>
+            </li>
+            <% if current_user.following?(user)%>
+              <%= link_to '取消追蹤', followship_path(user), method: :delete, class: "btn btn-primary" %>
+            <% else %>
+              <%= link_to '追蹤', followships_path(following_id: user), method: :post, class: "btn btn-primary" %>
+            <% end %>
+          </ul>
+        </div>
+      </div>
+      <hr>
+      <% end %>
+    </div>
+  </div>
+</div>
